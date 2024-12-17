@@ -8,6 +8,11 @@ image:
 service:
   type: LoadBalancer
   port: 80
+  targetPort: 3000
 
 env:
-  BASE_URL: "https://clerk.johnydev.com"
+  BASE_URL: "clerk.johnydev.com"
+  publickey: "CLERK_PUBLIC_KEY"
+  privatekey: "CLERK_PRIVATE_KEY"
+  clerkapiurl: "CLERK_API_URL"
+  feedspath: "/feeds/clerk.json"

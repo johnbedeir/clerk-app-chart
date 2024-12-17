@@ -6,6 +6,6 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: 3000
+      targetPort: {{ .Values.service.targetport }}
   selector:
     app: {{ .Release.Name }}-app

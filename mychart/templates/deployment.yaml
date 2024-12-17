@@ -13,10 +13,37 @@ spec:
         app: {{ .Release.Name }}-app
     spec:
       containers:
-        - name: clerk-app
+        - name: {{ .Release.Name }}-container
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          ports:
-            - containerPort: 3000
           env:
             - name: BASE_URL
-              value: "{{ .Values.env.BASE_URL }}"
+              value: {{ .Values.env.BASE_URL }}
+            - name: CLERK_PUBLIC_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: clerk-app-keys
+                  key: {{ .Values.env.publickey }}
+            - name: CLERK_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: clerk-app-keys
+                  key: {{ .Values.env.privatekey }}
+            - name: CLERK_API_URL
+              valueFrom:
+                secretKeyRef:
+                  name: clerk-app-keys
+                  key: {{ .Values.env.clerkapiurl }}
+          ports:
+            - containerPort: {{ .Values.service.targetport }}
+          livenessProbe: 
+            httpGet:
+              path: {{ .Values.env.feedspath }}
+              port: {{ .Values.service.targetport }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe: 
+            httpGet:
+              path: {{ .Values.env.feedspath }}
+              port: {{ .Values.service.targetport }}
+            initialDelaySeconds: 5
+            periodSeconds: 10                  
