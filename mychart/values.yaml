@@ -15,4 +15,3 @@ env:
   publickey: "CLERK_PUBLIC_KEY"
   privatekey: "CLERK_PRIVATE_KEY"
   clerkapiurl: "CLERK_API_URL"
-  feedspath: "/feeds/clerk.json"

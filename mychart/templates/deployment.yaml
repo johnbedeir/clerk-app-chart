@@ -1,16 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-app
+  name: {{ .Release.Name }}-deployment
+  labels:
+    app: {{ .Release.Name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-app
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-app
+        app: {{ .Release.Name }}
     spec:
       containers:
         - name: {{ .Release.Name }}-container
@@ -21,29 +23,17 @@ spec:
             - name: CLERK_PUBLIC_KEY
               valueFrom:
                 secretKeyRef:
-                  name: clerk-app-keys
+                  name: {{ .Release.Name }}-keys
                   key: {{ .Values.env.publickey }}
             - name: CLERK_PRIVATE_KEY
               valueFrom:
                 secretKeyRef:
-                  name: clerk-app-keys
+                  name: {{ .Release.Name }}-keys
                   key: {{ .Values.env.privatekey }}
             - name: CLERK_API_URL
               valueFrom:
                 secretKeyRef:
-                  name: clerk-app-keys
+                  name: {{ .Release.Name }}-keys
                   key: {{ .Values.env.clerkapiurl }}
           ports:
-            - containerPort: {{ .Values.service.targetport }}
-          livenessProbe: 
-            httpGet:
-              path: {{ .Values.env.feedspath }}
-              port: {{ .Values.service.targetport }}
-            initialDelaySeconds: 5
-            periodSeconds: 10
-          readinessProbe: 
-            httpGet:
-              path: {{ .Values.env.feedspath }}
-              port: {{ .Values.service.targetport }}
-            initialDelaySeconds: 5
-            periodSeconds: 10                  
+            - containerPort: {{ .Values.service.targetport }}               
