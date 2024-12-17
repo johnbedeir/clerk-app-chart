@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: 702551696126.dkr.ecr.eu-central-1.amazonaws.com/dev-cluster-1-app-img
+  repository: 702551696126.dkr.ecr.eu-central-1.amazonaws.com/dev-cluster-1-clerk-app
   tag: latest
   pullPolicy: IfNotPresent
 
