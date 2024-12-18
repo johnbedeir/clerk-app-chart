@@ -1,4 +1,5 @@
 replicaCount: 2
+region: eu-central-1
 
 image:
   repository: 702551696126.dkr.ecr.eu-central-1.amazonaws.com/dev-cluster-1-clerk-app
@@ -11,7 +12,9 @@ service:
   targetPort: 3000
 
 env:
-  BASE_URL: "clerk.johnydev.com"
+  BASE_URL: "https://clerk.johnydev.com"
   publickey: "CLERK_PUBLIC_KEY"
   privatekey: "CLERK_PRIVATE_KEY"
   clerkapiurl: "CLERK_API_URL"
+  secretmanager: "clerk-app-secrets"
+  externalsecretname: "external-secrets-sa"
