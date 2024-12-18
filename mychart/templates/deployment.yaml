@@ -36,4 +36,4 @@ spec:
                   name: {{ .Release.Name }}-keys
                   key: {{ .Values.env.clerkapiurl }}
           ports:
-            - containerPort: {{ .Values.service.targetport }}               
+            - containerPort: {{ .Values.service.targetPort }}               

@@ -3,11 +3,11 @@ entries:
   clerk-app:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-12-18T00:21:13.489171443-05:00"
+    created: "2024-12-18T00:29:01.902675184-05:00"
     description: A Helm chart for Clerk App
-    digest: a16aab8c3e368b78cfd85465773011a18a8184512b5d1953bf0a550818a4ce1b
+    digest: 57b7ca8895c352ee7acd8023bba644305b10f72a3112db3683285f05d5959627
     name: clerk-app
     urls:
     - https://johnbedeir.github.io/clerk-app-chart/clerk-app-1.0.0.tgz
     version: 1.0.0
-generated: "2024-12-18T00:21:13.488885527-05:00"
+generated: "2024-12-18T00:29:01.902348629-05:00"
