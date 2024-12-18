@@ -23,17 +23,17 @@ spec:
             - name: CLERK_PUBLIC_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-keys
+                  name: clerk-k8s-secrets
                   key: {{ .Values.env.publickey }}
             - name: CLERK_PRIVATE_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-keys
+                  name: clerk-k8s-secrets
                   key: {{ .Values.env.privatekey }}
             - name: CLERK_API_URL
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-keys
+                  name: clerk-k8s-secrets
                   key: {{ .Values.env.clerkapiurl }}
           ports:
             - containerPort: {{ .Values.service.targetPort }}               
