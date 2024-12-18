@@ -1,5 +1,7 @@
 # Clerk-API-Wrapper Helm Chart: Deployment Guide
 
+<img src=cover.png>
+
 ## Overview
 
 The **Clerk-API-Wrapper Helm Chart** simplifies the deployment of the Clerk-API-Wrapper application using Helm. This guide outlines the steps to package, index, and deploy the application efficiently.
